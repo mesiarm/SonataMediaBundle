@@ -13,8 +13,9 @@ file that was distributed with this source code.
 
 {% block block %}
     {% sonata_template_box 'This is the media block. Feel free to override it.' %}
-
+{% if settings.container %}
     <div class="{{ settings.class }}">
+{% endif %}
         {% if settings.title %}
             <h3>
                 {% if settings.icon %}
@@ -29,5 +30,7 @@ file that was distributed with this source code.
         {% endif %}
 
         {{ sonata_media(media, settings.format|default('reference')) }}
+{% if settings.container %}
     </div>
+{% endif %}
 {% endblock block %}
