@@ -29,6 +29,7 @@ use Sonata\MediaBundle\Model\MediaManagerInterface;
 use Sonata\MediaBundle\Provider\Pool;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -72,6 +73,7 @@ final class MediaBlockService extends AbstractBlockService implements EditableBl
             'translation_domain' => null,
             'icon' => null,
             'class' => null,
+            'container' => false,
             'context' => false,
             'mediaId' => null,
             'format' => false,
@@ -103,6 +105,10 @@ final class MediaBlockService extends AbstractBlockService implements EditableBl
                 ]],
                 ['class', TextType::class, [
                     'label' => 'form.label_class',
+                    'required' => false,
+                ]],
+                 ['container', CheckboxType::class, [
+                    'label' => 'form.label_container',
                     'required' => false,
                 ]],
                 [$this->getMediaBuilder(), null, []],
